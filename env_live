@@ -1,0 +1,63 @@
+PORT=3000
+CHOKIDAR_USEPOLLING=true
+REACT_APP_FRONTEND_SERVER_URL = http://localhost:3001
+REACT_APP_FRONTEND_URL = http://localhost:3000/
+REACT_APP_FILE_URL = http://localhost:3005
+HTTS=true
+
+CHOKIDAR_USEPOLLING=true
+REACT_APP_FRONTEND_SERVER_URL = https://alahee.com.bd:3001
+REACT_APP_FRONTEND_URL = https://alahee.com.bd/
+REACT_APP_FILE_URL = https://store.alahee.com.bd
+
+
+CHOKIDAR_USEPOLLING=true
+REACT_APP_FRONTEND_SERVER_URL = https://alahee.com:3006
+REACT_APP_FRONTEND_URL = https://alahee.com/
+REACT_APP_FILE_URL = https://store.alahee.com
+
+local & bd
+REACT_APP_FRONTEND_Local_SERVER_URL = http://localhost:3001
+com
+REACT_APP_FRONTEND_Local_SERVER_URL = http://localhost:3006
+
+
+
+## ENV
+# HTTPS=true
+# CHOKIDAR_USEPOLLING=true
+# REACT_APP_PROJECT_NAME = alahee.com
+# REACT_APP_FRONTEND_SERVER_URL = https://alahee.com:5001
+# REACT_APP_FRONTEND_URL = https://alahee.com/
+# REACT_APP_FILE_URL = https://admin.alahee.com
+# REACT_APP_STORE_URL = https://admin.alahee.com
+# REACT_APP_BLOG_URL = https://blog.alahee.com
+# REACT_APP_COMPANY_NAME = alahee
+# REACT_APP_TOKEN = alahee
+# REACT_APP_ADMIN_SERVER_URL = https://admin.alahee.com:5005
+# REACT_APP_PUBLIC_URL       = https://admin.alahee.com
+# REACT_APP_STORE_NAME =  admin.alahee.com
+# REACT_APP_FRONT_NAME =  alahee.com
+# REACT_APP_FRONT_URL  = "https://alahee.com/"
+
+
+## ENV PRODUCTION
+# HTTPS=true
+# CHOKIDAR_USEPOLLING=true
+# REACT_APP_PROJECT_NAME = alahee.com
+# REACT_APP_FRONTEND_SERVER_URL = https://alahee.com:5001
+# REACT_APP_FRONTEND_URL = https://alahee.com/
+# REACT_APP_FILE_URL = https://admin.alahee.com
+# REACT_APP_STORE_URL = https://admin.alahee.com
+# REACT_APP_BLOG_URL = https://blog.alahee.com
+
+## ENV DEVELOPMENT
+# PORT=3000
+# REACT_APP_PROJECT_NAME = alahee.com
+# REACT_APP_FRONTEND_SERVER_URL = https://alahee.com:5001
+# REACT_APP_FRONTEND_URL = https://alahee.com/
+# REACT_APP_FILE_URL = https://admin.alahee.com
+# REACT_APP_STORE_URL = https://admin.alahee.com
+# REACT_APP_BLOG_URL = https://blog.alahee.com
+# REACT_APP_COMPANY_NAME = alahee
+# REACT_APP_TOKEN = alahee

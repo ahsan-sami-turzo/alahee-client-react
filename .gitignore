@@ -1,0 +1,21 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+/node_modules
+/.pnp
+.pnp.js
+/.idea
+.idea
+/build
+package-lock.json
+debug.log
+
+.DS_Store
+.env
+.env.test
+.env.development.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
