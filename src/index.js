@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM, { render } from "react-dom";
+import { render } from "react-dom";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { PersistGate } from "redux-persist/integration/react";
@@ -16,7 +16,6 @@ import "./assets/notFoundPage.css";
 import "./assets/scrollToTop.css";
 import "./assets/selectImage.css";
 import "./assets/social-share.css";
-
 
 import './assets/styles_update/auth.css';
 import './assets/styles_update/checkout.css';
@@ -36,39 +35,50 @@ import './assets/styles_update/shopping-cart.css';
 import './assets/styles_update/social-login.css';
 import './assets/styles_update/vendor.css';
 
-const rootElement = document.getElementById("root");
+// const rootElement = document.getElementById("root");
+// if (rootElement.hasChildNodes()) {
+//   const hydrate = () => {
+//     return ReactDOM.hydrate(
+//       <Provider store={store}>
+//         <BrowserRouter>
+//           <PersistGate persistor={persistor}>
+//             <ScrollToTop />
+//             <App />
+//           </PersistGate>
+//         </BrowserRouter>
+//       </Provider>,
+//       document.getElementById("root")
+//     );
+//   };
+//   hydrate(App);
+// } else {
+//   const render = () => {
+//     return ReactDOM.render(
+//       <Provider store={store}>
+//         <BrowserRouter>
+//           <PersistGate persistor={persistor}>
+//             <ScrollToTop />
+//             <App />
+//           </PersistGate>
+//         </BrowserRouter>
+//       </Provider>,
+//       document.getElementById("root")
+//     );
+//   };
+//   render(App);
+// }
 
-if (rootElement.hasChildNodes()) {
-  const hydrate = () => {
-    return ReactDOM.hydrate(
-      <Provider store={store}>
-        <BrowserRouter>
-          <PersistGate persistor={persistor}>
-            <ScrollToTop />
-            <App />
-          </PersistGate>
-        </BrowserRouter>
-      </Provider>,
-      document.getElementById("root")
-    );
-  };
-  hydrate(App);
-} else {
-  const render = () => {
-    return ReactDOM.render(
-      <Provider store={store}>
-        <BrowserRouter>
-          <PersistGate persistor={persistor}>
-            <ScrollToTop />
-            <App />
-          </PersistGate>
-        </BrowserRouter>
-      </Provider>,
-      document.getElementById("root")
-    );
-  };
-  render(App);
-}
+render(
+  <Provider store={store}>
+    <BrowserRouter>
+      <PersistGate persistor={persistor}>
+        <ScrollToTop />
+        <App />
+      </PersistGate>
+    </BrowserRouter>
+  </Provider>,
+  document.getElementById('root')
+);
 
 if (module.hot) {
   module.hot.accept("./App", () => {
