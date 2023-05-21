@@ -61,3 +61,9 @@ REACT_APP_FRONTEND_Local_SERVER_URL = http://localhost:3006
 # REACT_APP_BLOG_URL = https://blog.alahee.com
 # REACT_APP_COMPANY_NAME = alahee
 # REACT_APP_TOKEN = alahee
+
+
+# ALAHEE SERVER CREDS
+# URL: https://mplus.microfinplus.com:2083
+# USERNAME: alahee
+# PASSWORD: YIHCOSiCr,;1c&aS=nq,$Z

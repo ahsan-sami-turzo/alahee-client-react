@@ -1,0 +1,20 @@
+CREATE TRIGGER `update_product_full_description` AFTER INSERT ON `products`
+ FOR EACH ROW update products set product_full_description = trim(replace(REPLACE(product_full_description, CHAR(13),''),CHAR(10),''))
+
+
+UPDATE `category` SET `slug`= REPLACE(slug, "\"", "") 
+
+UPDATE `products` SET `product_full_description`= trim(replace(REPLACE(product_full_description, CHAR(13),''),CHAR(10),''))
+
+UPDATE `products` SET `slug`= slugify(product_name, id)
+
+UPDATE `vendor_details` SET `slug`= slugify(name, vendor_id)
+
+
+UPDATE `category_order` SET `slug`= slugify(category_name, category_id) 
+
+
+
+UPDATE `products` SET 
+`slug`= slugify(product_name, id), 
+`product_full_description`= trim(replace(REPLACE(product_full_description, CHAR(13),''),CHAR(10),''))
