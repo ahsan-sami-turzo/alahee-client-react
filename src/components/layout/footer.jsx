@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import ScrollToTop from "../shared/scroll-to-top";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
+import ScrollToTop from "../shared/scroll-to-top";
 
 const base = process.env.REACT_APP_FRONTEND_SERVER_URL;
 const file_url = process.env.REACT_APP_FILE_URL;
@@ -64,12 +64,12 @@ const Footer = ({ companyInfo }) => {
                 <ul className="footer-font-size">
                   {categories.length > 0
                     ? categories.map((el) => (
-                        <li key={el.id}>
-                          <a href={`/productList/${el.slug}`}>
-                            {el.category_name}
-                          </a>
-                        </li>
-                      ))
+                      <li key={el.id}>
+                        <a href={`/productList/${el.slug}`}>
+                          {el.category_name}
+                        </a>
+                      </li>
+                    ))
                     : null}
                 </ul>
               </div>

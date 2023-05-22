@@ -1,12 +1,11 @@
-import React, { Component, Fragment } from "react";
 import axios from "axios";
+import React, { Component } from "react";
 
 import CategoriesMb from '../components/home-page/category-sidebar/categories-mb';
 import MainCategoriesSidebar from '../components/home-page/category-sidebar/main-categories-sidebar';
 import ProductCard from '../components/shared/product-card';
 
 const base = process.env.REACT_APP_FRONTEND_SERVER_URL;
-const fileUrl = process.env.REACT_APP_FILE_URL;
 
 class Search extends Component {
   constructor(props) {
@@ -20,9 +19,9 @@ class Search extends Component {
 
   componentDidMount() {
     this.getAllCtegoryList();
-    this.categoryProductLIst();    
+    this.categoryProductLIst();
   }
-  
+
 
   getAllCtegoryList() {
     axios
@@ -53,7 +52,7 @@ class Search extends Component {
 
   render() {
     const { productList, categories } = this.state;
-    
+
     return (
 
       <div className="container mt-2">
@@ -77,7 +76,7 @@ class Search extends Component {
             <div className="row">
               <div className="col-12 mt-2">
                 Search Results for "<b>{this.state.searchKey}</b>"
-                </div>
+              </div>
             </div>
 
             <div className="row">

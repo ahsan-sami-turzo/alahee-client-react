@@ -1,9 +1,9 @@
 import React from 'react';
 import {
   calDiscountPercentage,
+  calculateProductPriceAfterDiscount,
   capitalizeStr,
-  shorten_the_name,
-  calculateProductPriceAfterDiscount
+  shorten_the_name
 } from '../../utils/utils';
 
 const file_url = process.env.REACT_APP_FILE_URL;
@@ -17,7 +17,7 @@ const ProductCard = ({ product, customTitleCSS, customTextCSS }) => {
   return (
     <>
       <div className="card">
-        <a href={`/productDetails/${product.slug}`} >          
+        <a href={`/productDetails/${product.slug}`} >
           <img
             className="card-img-top"
             src={`${img_src}/${product.home_image}`}
@@ -29,7 +29,7 @@ const ProductCard = ({ product, customTitleCSS, customTextCSS }) => {
             // }
             alt={capitalizeStr(product.product_name)}
             title={capitalizeStr(product.product_name)}
-          />  
+          />
         </a>
 
         {/* desktop  */}
@@ -69,9 +69,8 @@ const ProductCard = ({ product, customTitleCSS, customTextCSS }) => {
         <div className="card-body">
           <div className="text-center">
             <h1
-              className={`card-title h6 ${
-                customTitleCSS && 'custom-cart-title-font-size'
-              }`}
+              className={`card-title h6 ${customTitleCSS && 'custom-cart-title-font-size'
+                }`}
             >
               {/* <a href={`/product-details/${product.product_id}`} > */}
               <a href={`/productDetails/${product.slug}`} >
@@ -81,17 +80,16 @@ const ProductCard = ({ product, customTitleCSS, customTextCSS }) => {
               </a>
             </h1>
             <p
-              className={`card-text ${
-                customTextCSS && 'custom-cart-text-font-size'
-              }`}
+              className={`card-text ${customTextCSS && 'custom-cart-text-font-size'
+                }`}
             >
-              <span className={ (calculateProductPriceAfterDiscount(product.productPrice, product.discountAmount) > 0 ? 'strikediag' : '')}>
+              <span className={(calculateProductPriceAfterDiscount(product.productPrice, product.discountAmount) > 0 ? 'strikediag' : '')}>
                 ৳&nbsp;{product.productPrice}
-              </span>              
-                &nbsp;
-                { calculateProductPriceAfterDiscount(product.productPrice, product.discountAmount) > 0 && (
-                  <span className='custom-cart-discount-font-size'>৳&nbsp;{calculateProductPriceAfterDiscount(product.productPrice, product.discountAmount)}</span>
-                )}              
+              </span>
+              &nbsp;
+              {calculateProductPriceAfterDiscount(product.productPrice, product.discountAmount) > 0 && (
+                <span className='custom-cart-discount-font-size'>৳&nbsp;{calculateProductPriceAfterDiscount(product.productPrice, product.discountAmount)}</span>
+              )}
             </p>
           </div>
         </div>

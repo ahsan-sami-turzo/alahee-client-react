@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
 const base = process.env.REACT_APP_FRONTEND_SERVER_URL;
 
 const ContactUs = () => {
@@ -12,15 +12,15 @@ const ContactUs = () => {
 
   const getCompanyInfo = () => {
     axios
-        .get(`${base}/api/getCompanyInfo`)
-        .then(res => set_companyInfo(res.data[0]));
+      .get(`${base}/api/getCompanyInfo`)
+      .then(res => set_companyInfo(res.data[0]));
   }
 
   return (
     <>
       <div className="container-fluid mt-3">
         {/* desktop  */}
-        <div className="contactMap d-none d-lg-block">          
+        <div className="contactMap d-none d-lg-block">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.638339000686!2d90.36721321498155!3d23.76027298458445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755bfde75337acf%3A0xa3c78a14f1165735!2salahee.com!5e0!3m2!1sen!2sbd!4v1595998076272!5m2!1sen!2sbd"
             width="100%"
@@ -32,7 +32,7 @@ const ContactUs = () => {
           ></iframe>
         </div>
         {/* mobile  */}
-        <div className="contactMap d-block d-lg-none">          
+        <div className="contactMap d-block d-lg-none">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.638339000686!2d90.36721321498155!3d23.76027298458445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755bfde75337acf%3A0xa3c78a14f1165735!alahee.com!5e0!3m2!1sen!2sbd!4v1595998076272!5m2!1sen!2sbd"
             width="100%"
@@ -121,7 +121,7 @@ const ContactUs = () => {
               </div>
               <div className="col-11 pl-4">
                 <p className="d-inline-block mt-1">
-                  {companyInfo && (companyInfo.email)}               
+                  {companyInfo && (companyInfo.email)}
                 </p>
               </div>
             </div>

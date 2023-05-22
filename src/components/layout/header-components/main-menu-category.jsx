@@ -1,5 +1,5 @@
-import React, { Component } from "react";
 import axios from "axios";
+import React, { Component } from "react";
 
 const base = process.env.REACT_APP_FRONTEND_SERVER_URL;
 
@@ -25,14 +25,14 @@ class MainMenuCategory extends Component {
         <div className="col-12">
           {categories.length > 0
             ? categories.map(el => (
-                <span className="mr-2 main-menu" key={el.id}>
-                  <a
-                    href={`/productList/${el.slug}`}
-                  >
-                    {el.category_name}
-                  </a>
-                </span>
-              ))
+              <span className="mr-2 main-menu" key={el.id}>
+                <a
+                  href={`/productList/${el.slug}`}
+                >
+                  {el.category_name}
+                </a>
+              </span>
+            ))
             : null}
         </div>
       </div>

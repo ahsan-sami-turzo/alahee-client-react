@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useContext } from "react";
-import { CartContext } from "../../context/CartContext";
 import axios from "axios";
+import React, { useContext, useEffect, useState } from "react";
+import { CartContext } from "../../context/CartContext";
 
+import { base, fileUrl, options } from "../../utils/common-helpers";
 import { comma_separate_numbers } from "../../utils/utils";
-import { base, frontEndUrl, fileUrl, emailPattern, options } from "../../utils/common-helpers";
 
 
 const CartItems = (props) => {

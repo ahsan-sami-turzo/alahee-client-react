@@ -1,15 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
+import {
+  base
+} from "../../utils/common-helpers";
 import CartItems from "./cart-items";
 import OrderSummary from "./order-summary";
-import {
-  base,
-  frontEndUrl,
-  fileUrl,
-  emailPattern,
-  options,
-} from "../../utils/common-helpers";
 
 const Shopping_Cart = () => {
   const history = useHistory();
@@ -56,7 +52,7 @@ const Shopping_Cart = () => {
   const promoAmount = (data) => {
     set_promoAmount(data);
   };
-  
+
   const discountAmount = (data) => {
     set_discountAmount(data);
   };
@@ -95,7 +91,7 @@ const Shopping_Cart = () => {
 
   return (
     <React.Fragment>
-      
+
       {/* Policy Modal  */}
       <button
         style={{ display: "none !important" }}
@@ -159,7 +155,7 @@ const Shopping_Cart = () => {
 
           <div className="col-lg-4 col-md-6">
             <div className="panel panel-default">
-              <OrderSummary               
+              <OrderSummary
                 cartProducts={cartProducts}
                 discountDetails={discountDetails}
                 promoCodeDetails={promoCodeDetails}
@@ -226,7 +222,7 @@ const Shopping_Cart = () => {
               </button>
             </div>
 
-            { !customerId && 
+            {!customerId &&
 
               <div className="container mt-1 pt-1 cartAuthButtons">
                 <button
@@ -250,7 +246,7 @@ const Shopping_Cart = () => {
           </div>
         </div>
       </div>
-    
+
     </React.Fragment>
   );
 };

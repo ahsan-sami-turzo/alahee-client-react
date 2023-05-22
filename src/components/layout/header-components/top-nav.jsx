@@ -1,24 +1,10 @@
+import axios from "axios";
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
-import axios from "axios";
-import CartIcon from "./cart-icon";
 import {
-  Button,
-  Navbar,
-  Nav,
-  NavItem,
-  NavDropdown,
-  MenuItem,
-  DropdownButton,
-  Dropdown,
-} from "react-bootstrap";
-import {
-  base,
-  frontEndUrl,
-  fileUrl,
-  emailPattern,
-  options,
+  base
 } from "../../../utils/common-helpers";
+import CartIcon from "./cart-icon";
 
 
 const REACT_APP_STORE_URL = process.env.REACT_APP_STORE_URL;
@@ -392,7 +378,7 @@ class TopNav extends Component {
                     {/* <a className="dropdown-item dropdownItemMobile" href="/wish">
                       Wish List
                     </a> */}
-                    
+
                     <a className="dropdown-item dropdownItemMobile" href="/profile/my-orders">
                       My Orders
                     </a>

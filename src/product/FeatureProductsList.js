@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { Helmet } from "react-helmet";
 import axios from "axios";
-
+import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import CategoriesMb from '../components/home-page/category-sidebar/categories-mb';
 import MainCategoriesSidebar from '../components/home-page/category-sidebar/main-categories-sidebar';
 import ProductCard from '../components/shared/product-card';
-
-import { base, frontEndUrl, fileUrl, emailPattern, options } from "../utils/common-helpers";
+import { base } from "../utils/common-helpers";
 import { capitalizeStr } from "../utils/utils";
 
 const FeatureProductsList = ({ match }) => {
@@ -18,7 +16,6 @@ const FeatureProductsList = ({ match }) => {
         getFeatureproducts();
         getAllCtegoryList();
     }, []);
-
 
     const getFeatureproducts = () => {
         axios

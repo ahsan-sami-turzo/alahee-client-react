@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import ProductCard from '../../components/shared/product-card';
 import ProductCardConditional from '../../components/shared/product-card-conditional';
 
 const SameVendorOrSameCatProducts = ({ vorc, id, products }) => {
@@ -9,10 +8,10 @@ const SameVendorOrSameCatProducts = ({ vorc, id, products }) => {
   const [visibleDesk, setVisibleDesk] = useState(5);
   const [otherProductsDesk, setOtherProductsDesk] = useState([]);
 
-  
+
   useEffect(() => {
     setOtherProducts(products);
-    if(products.length > 0){ 
+    if (products.length > 0) {
       setOtherProductsDesk([...products.slice(0, 5)]);
     }
   }, [products]);
@@ -68,12 +67,12 @@ const SameVendorOrSameCatProducts = ({ vorc, id, products }) => {
               key={product.product_id}
             >
               {/* <ProductCard product={product} /> */}
-              <ProductCardConditional 
-                product = {product} 
-                customNewLabelCSSDesktop = "product-new-label-others" 
-                customDiscountCSSDesktop = "product-new-label-discount-others"
-                customNewLabelCSSMobile = "product-new-label-twoDiv" 
-                customDiscountCSSMobile = "product-new-label-discount-twoDiv"
+              <ProductCardConditional
+                product={product}
+                customNewLabelCSSDesktop="product-new-label-others"
+                customDiscountCSSDesktop="product-new-label-discount-others"
+                customNewLabelCSSMobile="product-new-label-twoDiv"
+                customDiscountCSSMobile="product-new-label-discount-twoDiv"
               />
             </div>
           ))}

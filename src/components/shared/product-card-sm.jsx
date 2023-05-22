@@ -1,9 +1,9 @@
 import React from 'react';
 import {
   calDiscountPercentage,
+  calculateProductPriceAfterDiscount,
   capitalizeStr,
-  shorten_the_name_upto_six,
-  calculateProductPriceAfterDiscount
+  shorten_the_name_upto_six
 } from '../../utils/utils';
 
 const fileUrl = process.env.REACT_APP_FILE_URL;
@@ -83,7 +83,7 @@ const ProductCardSM = ({ product }) => {
                 <span>৳&nbsp;{product.productPrice}</span>
               )} */}
 
-              <span className={ (calculateProductPriceAfterDiscount(product.productPrice, product.discountAmount) > 0 ? 'strikediag' : '')}>
+              <span className={(calculateProductPriceAfterDiscount(product.productPrice, product.discountAmount) > 0 ? 'strikediag' : '')}>
                 ৳&nbsp;{product.productPrice}
               </span>
               &nbsp;

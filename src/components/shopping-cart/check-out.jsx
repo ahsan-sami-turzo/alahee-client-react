@@ -1,15 +1,12 @@
-import React, { useState, useEffect, useRef } from "react";
-import { useHistory } from "react-router-dom";
 import axios from "axios";
-import CartItems from "./cart-items";
-import OrderSummary from "./order-summary";
+import React, { useEffect, useRef, useState } from "react";
+import { useHistory } from "react-router-dom";
 import {
   base,
-  frontEndUrl,
-  fileUrl,
-  emailPattern,
-  options,
+  options
 } from "../../utils/common-helpers";
+import CartItems from "./cart-items";
+import OrderSummary from "./order-summary";
 
 import { comma_separate_numbers, IsNullOrEmpty } from "../../utils/utils";
 
@@ -626,9 +623,9 @@ const CheckOut = () => {
             <div className="col-lg-6 col-md-6 col-sm-12">
               <div className="checkout-form">
                 <h1 className="mt-3 mb-3 h4">Shipping Address</h1>
-                
+
                 <UpdateCustomerBillingAddress />
-                
+
               </div>
             </div>
           )}

@@ -1,17 +1,13 @@
 import React from "react";
-import {
-  calDiscountPercentage,
-  capitalizeStr,
-  capitalize_and_shorten_name
-} from "./../../utils/utils";
 import ProductCardConditional from '../shared/product-card-conditional';
-
-const fileUrl = process.env.REACT_APP_FILE_URL;
+import {
+  capitalizeStr
+} from "./../../utils/utils";
 
 const ListingFeaturedCategoryTreeMB = ({ featuredCategories }) => {
 
   const { parent, subCat, tree1, tree2 } = featuredCategories;
-  
+
   return (
     <>
       {/* parent */}
@@ -60,7 +56,7 @@ const ListingFeaturedCategoryTreeMB = ({ featuredCategories }) => {
 
       {/* tree 1 */}
       {tree1 &&
-        tree1.map(( tree, index ) => (
+        tree1.map((tree, index) => (
           <React.Fragment key={index} >
             <div className="row" key={tree.cat_info.id}>
               <div className="col-12 mt-1">
@@ -92,7 +88,7 @@ const ListingFeaturedCategoryTreeMB = ({ featuredCategories }) => {
 
       {/* tree 2 */}
       {tree2 &&
-        tree2.map(( tree, index ) => (
+        tree2.map((tree, index) => (
           <React.Fragment key={index} >
             <div className="row" key={tree.cat_info.id}>
               <div className="col-12 mt-1">

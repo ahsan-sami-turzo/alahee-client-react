@@ -1,8 +1,8 @@
-import React, { Component, Fragment } from "react";
 import axios from "axios";
+import React, { Component, Fragment } from "react";
 import { Helmet } from "react-helmet";
-import ProductCard from "../shared/product-card";
 import { capitalizeStr } from "../../utils/utils";
+import ProductCard from "../shared/product-card";
 const { sampleSize } = require("lodash");
 
 const fileUrl = process.env.REACT_APP_FILE_URL;
@@ -99,7 +99,7 @@ class Vendor extends Component {
     render() {
         const { vendorInfo, categoriesArr, selectedCatVal, items } = this.state;
         // console.log('check...',this.state.id, vendorInfo);
-        if(vendorInfo && vendorInfo.cover_photo) vendorInfo.cover_photo = vendorInfo.cover_photo.replaceAll('\"', '');
+        if (vendorInfo && vendorInfo.cover_photo) vendorInfo.cover_photo = vendorInfo.cover_photo.replaceAll('\"', '');
         return (
             <Fragment>
 
@@ -185,9 +185,9 @@ class Vendor extends Component {
                                         <div
                                             className="dropdown-menu dropdown-menu-right"
                                             aria-labelledby="navbarDropdown"
-                                        >                                           
+                                        >
 
-                                            {categoriesArr.map((item, i) => (                                        
+                                            {categoriesArr.map((item, i) => (
                                                 <a key={i} className="dropdown-item dropdownItemMobile" href="#" onClick={this.onClickCategoryHandler(item.category_id)}>
                                                     {item.category_name}
                                                 </a>

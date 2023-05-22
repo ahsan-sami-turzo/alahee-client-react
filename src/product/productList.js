@@ -1,11 +1,11 @@
-import React, { Component, Fragment } from "react";
-import { Helmet } from "react-helmet";
 import axios from "axios";
+import React, { Component } from "react";
+import { Helmet } from "react-helmet";
 
-import ProductListBreadCrumb from "../components/shared/productListBreadCrumb";
 import CategoriesMb from "../components/home-page/category-sidebar/categories-mb";
 import MainCategoriesSidebar from "../components/home-page/category-sidebar/main-categories-sidebar";
 import ProductCard from "../components/shared/product-card";
+import ProductListBreadCrumb from "../components/shared/productListBreadCrumb";
 
 const base = process.env.REACT_APP_FRONTEND_SERVER_URL;
 
@@ -24,7 +24,7 @@ class ProductList extends Component {
   }
 
   getProductListByCategoryId() {
-    console.log("this.state.categoryId...",this.state.categoryId);
+    console.log("this.state.categoryId...", this.state.categoryId);
     axios
       .get(`${base}/api/productListByCat/${this.state.categoryId}`)
       // .get(`${base}/api/productListBySlug/${this.state.slug}`)

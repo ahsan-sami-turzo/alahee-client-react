@@ -1,5 +1,5 @@
-import React, {Component, Fragment} from 'react';
 import axios from "axios";
+import React, { Component, Fragment } from 'react';
 import Footer from './footer';
 import Header from './header';
 
@@ -8,7 +8,7 @@ const base = process.env.REACT_APP_FRONTEND_SERVER_URL;
 class Layout extends Component {
 
     state = {
-        companyInfo: null        
+        companyInfo: null
     };
 
     componentDidMount() {
@@ -22,17 +22,17 @@ class Layout extends Component {
     }
 
     render() {
-                
+
         return (
             <Fragment>
-                {this.state.companyInfo && 
-                    <Header companyInfo={this.state.companyInfo}/> 
+                {this.state.companyInfo &&
+                    <Header companyInfo={this.state.companyInfo} />
                 }
-                    
-                    {this.props.children}
 
-                {this.state.companyInfo && 
-                    <Footer companyInfo={this.state.companyInfo}/>
+                {this.props.children}
+
+                {this.state.companyInfo &&
+                    <Footer companyInfo={this.state.companyInfo} />
                 }
             </Fragment>
         )

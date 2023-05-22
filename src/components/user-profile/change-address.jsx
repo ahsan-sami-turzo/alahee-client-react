@@ -1,13 +1,11 @@
-import React, { Component, Fragment } from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import axios from "axios";
-import Autosuggest from "react-autosuggest";
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
 import { change_customer_address } from "../../redux/customer-profile/customer-actions";
 
-import ProfilePageNav from "./profile-nav";
 import UpdateCustomerAddress from "../shared/update-customer-address";
+import ProfilePageNav from "./profile-nav";
 
 const base = process.env.REACT_APP_FRONTEND_SERVER_URL;
 

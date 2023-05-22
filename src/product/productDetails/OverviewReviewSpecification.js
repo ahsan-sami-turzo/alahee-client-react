@@ -1,7 +1,7 @@
 import React from "react";
 import { fileUrl } from "./../../utils/common-helpers";
 
-const OverviewReviewSpecification = ({product_full_description, product_specification_details_description}) => {
+const OverviewReviewSpecification = ({ product_full_description, product_specification_details_description }) => {
 
   const productDescriptions = () => {
     let descriptionText = [];
@@ -43,7 +43,7 @@ const OverviewReviewSpecification = ({product_full_description, product_specific
   };
 
   let counter = 1;
-  
+
   return (
     <>
       {/* OVERVIEW, CUSTOMER REVIEWS, SPECIFICATIONS */}
@@ -121,41 +121,41 @@ const OverviewReviewSpecification = ({product_full_description, product_specific
                     <div className="col-md-6">
                       {product_specification_details_description
                         ? product_specification_details_description.forEach(
-                            (item, key) => {
-                              if (counter === 1) {
-                                if ((key + 1) % 8 === 0) {
-                                  counter = key;
-                                  return false;
-                                } else {
-                                  return (
-                                    <li>
-                                      {item.specificationDetailsName}:{" "}
-                                      {item.specificationDetailsValue}
-                                    </li>
-                                  );
-                                }
+                          (item, key) => {
+                            if (counter === 1) {
+                              if ((key + 1) % 8 === 0) {
+                                counter = key;
+                                return false;
+                              } else {
+                                return (
+                                  <li>
+                                    {item.specificationDetailsName}:{" "}
+                                    {item.specificationDetailsValue}
+                                  </li>
+                                );
                               }
                             }
-                          )
+                          }
+                        )
                         : ""}
                     </div>
 
                     <div className="col-md-6">
                       {counter > 1
                         ? product_specification_details_description.map(
-                            (item, key) => {
-                              if (key >= counter) {
-                                return (
-                                  <li>
-                                    {counter}
-                                    {item.specificationDetailsName}:{" "}
-                                    {item.specificationDetailsValue}
-                                  </li>
-                                );
-                              }
-                              return "";
+                          (item, key) => {
+                            if (key >= counter) {
+                              return (
+                                <li>
+                                  {counter}
+                                  {item.specificationDetailsName}:{" "}
+                                  {item.specificationDetailsValue}
+                                </li>
+                              );
                             }
-                          )
+                            return "";
+                          }
+                        )
                         : ""}
                     </div>
                   </div>

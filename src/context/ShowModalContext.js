@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 export const ShowModalContext = React.createContext();
 
 export const ShowModalProvider = (props) => {
-    const [showModal, setShowModal] = useState(true);    
+    const [showModal, setShowModal] = useState(true);
     useEffect(() => {
         var show_modal = localStorage.getItem('showModal') || true;
         setShowModal(show_modal)

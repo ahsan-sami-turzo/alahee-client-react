@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 
 
-import swal from "sweetalert";
 import axios from "axios";
 import { isEqual } from "lodash";
+import swal from "sweetalert";
 
 const base = process.env.REACT_APP_FRONTEND_SERVER_URL;
 const frontEndUrl = process.env.REACT_APP_FRONTEND_URL;
@@ -38,16 +38,16 @@ class WishList extends Component {
     let productIds = [];
 
     if (wishData) {
-      wishData.forEach(function(val, index) {
+      wishData.forEach(function (val, index) {
         productIds.push(val.productId);
       });
 
       let uniqueProductIds = productIds.filter((v, i, a) => a.indexOf(v) === i);
       let revisedwishData = [];
 
-      uniqueProductIds.forEach(function(valParent, keyParent) {
+      uniqueProductIds.forEach(function (valParent, keyParent) {
         let totalCount = 0;
-        wishData.forEach(function(val, key) {
+        wishData.forEach(function (val, key) {
           if (valParent === val.productId) {
             totalCount += val.quantity;
           }
@@ -56,7 +56,7 @@ class WishList extends Component {
       });
 
       let revisedwishDataKeyValue = [];
-      revisedwishData.forEach(function(value, key) {
+      revisedwishData.forEach(function (value, key) {
         revisedwishDataKeyValue[value.productId] = value.quantity;
       });
 
@@ -101,7 +101,7 @@ class WishList extends Component {
       // let uniqueProductIds = [];
 
       if (wishData) {
-        wishData.forEach(function(val, index) {
+        wishData.forEach(function (val, index) {
           productIds.push(val.productId);
         });
 
@@ -110,9 +110,9 @@ class WishList extends Component {
         );
         let revisedwishData = [];
 
-        uniqueProductIds.forEach(function(valParent, keyParent) {
+        uniqueProductIds.forEach(function (valParent, keyParent) {
           let totalCount = 0;
-          wishData.forEach(function(val, key) {
+          wishData.forEach(function (val, key) {
             if (valParent === val.productId) {
               totalCount += val.quantity;
             }
@@ -121,7 +121,7 @@ class WishList extends Component {
         });
 
         let revisedwishDataKeyValue = [];
-        revisedwishData.forEach(function(value, key) {
+        revisedwishData.forEach(function (value, key) {
           revisedwishDataKeyValue[value.productId] = value.quantity;
         });
 
@@ -149,7 +149,7 @@ class WishList extends Component {
             });
             let requiredFunc = this.requiredFunc();
             let itemQuantityState = {};
-            response.data.forEach(function(item, key) {
+            response.data.forEach(function (item, key) {
               itemQuantityState[item.id] = requiredFunc[item.id];
             });
             this.setState({ itemQuantityState: itemQuantityState });
@@ -180,7 +180,7 @@ class WishList extends Component {
             wishProducts: response.data
           });
           let itemQuantityState = {};
-          response.data.forEach(function(item, key) {
+          response.data.forEach(function (item, key) {
             itemQuantityState[item.id] = item.quantity;
           });
           this.setState({ itemQuantityState: itemQuantityState });
@@ -188,7 +188,7 @@ class WishList extends Component {
     }
   }
 
-  
+
   onClickPlusHandler = data => {
     const sendData = { ...data };
     delete sendData.quantity;
@@ -379,14 +379,14 @@ class WishList extends Component {
     if (!localStorage.customer_id) {
       let wishData = JSON.parse(localStorage.getItem("wish"));
       let productIds = [];
-      wishData.forEach(function(val, index) {
+      wishData.forEach(function (val, index) {
         productIds.push(val.productId);
       });
       let uniqueProductIds = productIds.filter((v, i, a) => a.indexOf(v) === i);
       let revisedwishData = [];
-      uniqueProductIds.forEach(function(valParent, keyParent) {
+      uniqueProductIds.forEach(function (valParent, keyParent) {
         let totalCount = 0;
-        wishData.forEach(function(val, key) {
+        wishData.forEach(function (val, key) {
           if (valParent === val.productId) {
             totalCount += val.quantity;
           }
@@ -394,7 +394,7 @@ class WishList extends Component {
         revisedwishData.push({ productId: valParent, quantity: totalCount });
       });
       let newWishData = [];
-      revisedwishData.forEach(function(val, key) {
+      revisedwishData.forEach(function (val, key) {
         if (itemId !== val.productId) {
           newWishData.push({
             productId: val.productId,
@@ -544,8 +544,8 @@ class WishList extends Component {
             </div>
           </div>
         </div>
-        
-        
+
+
         <div className="row">
           <div className="medium-12 columns">
             <div className="card shopping-cart">
@@ -558,120 +558,120 @@ class WishList extends Component {
               <div className="card-body">
                 {this.state.wishProductsInfo.length > 0
                   ? this.state.wishProductsInfo.map((item, key) => {
-                      return (
-                        <React.Fragment>
-                          <div className="row">
-                            <div className="col-md-3 text-center">
-                              <img
-                                style={{ marginTop: "10px" }}
-                                className=""
-                                src={
-                                  fileUrl +
-                                  "/upload/product/compressedProductImages/" +
-                                  item.home_image
-                                }
-                                alt="prewiew"
-                                width="120"
-                                height="80"
-                              />
-                            </div>
+                    return (
+                      <React.Fragment>
+                        <div className="row">
+                          <div className="col-md-3 text-center">
+                            <img
+                              style={{ marginTop: "10px" }}
+                              className=""
+                              src={
+                                fileUrl +
+                                "/upload/product/compressedProductImages/" +
+                                item.home_image
+                              }
+                              alt="prewiew"
+                              width="120"
+                              height="80"
+                            />
+                          </div>
 
-                            <div className="col-md-3">
-                              <h1
-                                className="product-name"
-                                style={{ fontSize: "16px", fontWeight: "600" }}
-                              >
-                                <strong>{item.product_name}</strong>
-                              </h1>
-                              <p style={{ fontSize: "14px" }}>
-                                <b>Color: </b>
-                                {item.color.colorName}
-                              </p>
-                              &nbsp;&nbsp;&nbsp;
-                              <strong style={{ fontSize: "12px" }}>
-                                <b>Model:</b> {item.size.size}
-                              </strong>
-                              <h1
-                                style={{ fontSize: "14px", fontWeight: "600" }}
-                              >
-                                <b>৳{item.productPrice}</b>
-                              </h1>
-                            </div>
+                          <div className="col-md-3">
+                            <h1
+                              className="product-name"
+                              style={{ fontSize: "16px", fontWeight: "600" }}
+                            >
+                              <strong>{item.product_name}</strong>
+                            </h1>
+                            <p style={{ fontSize: "14px" }}>
+                              <b>Color: </b>
+                              {item.color.colorName}
+                            </p>
+                            &nbsp;&nbsp;&nbsp;
+                            <strong style={{ fontSize: "12px" }}>
+                              <b>Model:</b> {item.size.size}
+                            </strong>
+                            <h1
+                              style={{ fontSize: "14px", fontWeight: "600" }}
+                            >
+                              <b>৳{item.productPrice}</b>
+                            </h1>
+                          </div>
 
-                            <div className="col-md-6 row">
-                              <div className="col-md-6">
-                                <div className="quantity">
-                                  <div className="quantity-select">
-                                    <div
-                                      onClick={() =>
-                                        this.onClickMinusHandler(item)
-                                      }
-                                      className="entry value-minus1"
-                                    >
-                                      &nbsp;
-                                    </div>
-                                    <div className="entry value1">
-                                      <span>{item.quantity}</span>
-                                    </div>
-                                    <div
-                                      onClick={() =>
-                                        this.onClickPlusHandler(item)
-                                      }
-                                      className="entry value-plus1 active"
-                                    >
-                                      &nbsp;
-                                    </div>
+                          <div className="col-md-6 row">
+                            <div className="col-md-6">
+                              <div className="quantity">
+                                <div className="quantity-select">
+                                  <div
+                                    onClick={() =>
+                                      this.onClickMinusHandler(item)
+                                    }
+                                    className="entry value-minus1"
+                                  >
+                                    &nbsp;
+                                  </div>
+                                  <div className="entry value1">
+                                    <span>{item.quantity}</span>
+                                  </div>
+                                  <div
+                                    onClick={() =>
+                                      this.onClickPlusHandler(item)
+                                    }
+                                    className="entry value-plus1 active"
+                                  >
+                                    &nbsp;
                                   </div>
                                 </div>
                               </div>
+                            </div>
 
-                              <div className="col-md-6 text-center">
-                                <button
-                                  onClick={() =>
-                                    this.addProductIntoCartLocal(item)
-                                  }
+                            <div className="col-md-6 text-center">
+                              <button
+                                onClick={() =>
+                                  this.addProductIntoCartLocal(item)
+                                }
+                                style={{
+                                  backgroundColor: "931600",
+                                  width: "40px"
+                                }}
+                                className="btn btn-outline-danger btn-xs"
+                              >
+                                <i
+                                  className="fa fa-shopping-cart"
+                                  aria-hidden="true"
                                   style={{
-                                    backgroundColor: "931600",
-                                    width: "40px"
+                                    fontSize: "24px",
+                                    color: "#931600"
                                   }}
-                                  className="btn btn-outline-danger btn-xs"
+                                ></i>
+                              </button>
+                              {/*Delete Item*/}
+                              <button
+                                // onClick={() =>
+                                //   this.handleClickDelete(item.id)
+                                // }
+                                onClick={() =>
+                                  this.onClickDeleteHandler(item)
+                                }
+                                type="button"
+                                style={{ width: "40px" }}
+                                className="btn btn-outline-danger btn-xs"
+                              >
+                                <i
+                                  className="fa fa-trash"
+                                  aria-hidden="true"
+                                  style={{ fontSize: "24px", color: "red" }}
                                 >
-                                  <i
-                                    className="fa fa-shopping-cart"
-                                    aria-hidden="true"
-                                    style={{
-                                      fontSize: "24px",
-                                      color: "#931600"
-                                    }}
-                                  ></i>
-                                </button>
-                                {/*Delete Item*/}
-                                <button
-                                  // onClick={() =>
-                                  //   this.handleClickDelete(item.id)
-                                  // }
-                                  onClick={() =>
-                                    this.onClickDeleteHandler(item)
-                                  }
-                                  type="button"
-                                  style={{ width: "40px" }}
-                                  className="btn btn-outline-danger btn-xs"
-                                >
-                                  <i
-                                    className="fa fa-trash"
-                                    aria-hidden="true"
-                                    style={{ fontSize: "24px", color: "red" }}
-                                  >
-                                    {""}
-                                  </i>
-                                </button>
-                              </div>
+                                  {""}
+                                </i>
+                              </button>
                             </div>
                           </div>
-                          <hr />
-                        </React.Fragment>
-                      );
-                    })
+                        </div>
+                        <hr />
+                      </React.Fragment>
+                    );
+                  })
                   : ""}
               </div>
             </div>
@@ -697,7 +697,7 @@ class WishList extends Component {
             <div className="clearfix">{""}</div>
           </div>
         </div>
-       
+
       </React.Fragment>
     );
   }

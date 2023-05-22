@@ -2,7 +2,7 @@ import React from "react";
 import {
   calDiscountPercentage,
   capitalizeStr,
-  capitalize_and_shorten_name  
+  capitalize_and_shorten_name
 } from "./../../utils/utils";
 
 const fileUrl = process.env.REACT_APP_FILE_URL;
@@ -10,42 +10,42 @@ const fileUrl = process.env.REACT_APP_FILE_URL;
 const CardDemo = ({ product }) => (
   <>
     <div className="card">
-    <a href={`/productDetails/${product.slug}`} >
-      <img
-        className="card-img-top max-height-65"
-        src={`${fileUrl}/upload/product/compressedProductImages/${product.home_image}`}
-        onMouseOver={(e) =>
-          (e.currentTarget.src = `${fileUrl}/upload/product/compressedProductImages/${product.images[1].imageName}`)
-        }
-        onMouseOut={(e) =>
-          (e.currentTarget.src = `${fileUrl}/upload/product/compressedProductImages/${product.home_image}`)
-        }
-        alt={capitalizeStr(product.product_name)}
-        title={capitalizeStr(product.product_name)}
-      />
+      <a href={`/productDetails/${product.slug}`} >
+        <img
+          className="card-img-top max-height-65"
+          src={`${fileUrl}/upload/product/compressedProductImages/${product.home_image}`}
+          onMouseOver={(e) =>
+            (e.currentTarget.src = `${fileUrl}/upload/product/compressedProductImages/${product.images[1].imageName}`)
+          }
+          onMouseOut={(e) =>
+            (e.currentTarget.src = `${fileUrl}/upload/product/compressedProductImages/${product.home_image}`)
+          }
+          alt={capitalizeStr(product.product_name)}
+          title={capitalizeStr(product.product_name)}
+        />
 
-      {product.newProduct === 1 && (
-        <span className="product-new-label-feature-subchild">New</span>
-      )}
+        {product.newProduct === 1 && (
+          <span className="product-new-label-feature-subchild">New</span>
+        )}
 
-      {product.discountAmount != 0 && (
-        <span className="product-new-label-discount-feature-subchild">
-          {calDiscountPercentage(product.discountAmount, product.productPrice)}%
-        </span>
-      )}
+        {product.discountAmount != 0 && (
+          <span className="product-new-label-discount-feature-subchild">
+            {calDiscountPercentage(product.discountAmount, product.productPrice)}%
+          </span>
+        )}
 
-      <div className="card-body">
-        <div className="text-center">
-          <h1 className="card-title h4 mb-0 custom-font-size">
-            <span className="text-primary">
-              {capitalize_and_shorten_name(product.product_name)}
-            </span>
-          </h1>
-          <p className="card-text custom-font-size">
-            ৳&nbsp;{product.productPrice}
-          </p>
+        <div className="card-body">
+          <div className="text-center">
+            <h1 className="card-title h4 mb-0 custom-font-size">
+              <span className="text-primary">
+                {capitalize_and_shorten_name(product.product_name)}
+              </span>
+            </h1>
+            <p className="card-text custom-font-size">
+              ৳&nbsp;{product.productPrice}
+            </p>
+          </div>
         </div>
-      </div>
       </a>
     </div>
 
@@ -57,30 +57,30 @@ const ListingFeaturedCategoryTree = ({ featuredCategories }) => {
 
   const { parent, subCat, tree1, tree2 } = featuredCategories;
 
-  if(parent) parent['images'] = JSON.parse(parent.image);
-  if(subCat) {
-    subCat[0]['images'] = JSON.parse(subCat[0].image); 
+  if (parent) parent['images'] = JSON.parse(parent.image);
+  if (subCat) {
+    subCat[0]['images'] = JSON.parse(subCat[0].image);
     subCat[1]['images'] = JSON.parse(subCat[1].image);
   }
-  if(tree1){    
+  if (tree1) {
     tree1.map(tree => {
-      if(tree){
+      if (tree) {
         tree.products.map(product => {
-          if(product) product['images'] = JSON.parse(product.image)
+          if (product) product['images'] = JSON.parse(product.image)
         })
       }
-    })                      
+    })
   }
-  if(tree2){    
+  if (tree2) {
     tree2.map(tree => {
-      if(tree){
+      if (tree) {
         tree.products.map(product => {
-          if(product) product['images'] = JSON.parse(product.image)
+          if (product) product['images'] = JSON.parse(product.image)
         })
       }
-    })                      
+    })
   }
-  
+
   return (
     <>
       <div className="row no-gutters">
@@ -90,44 +90,44 @@ const ListingFeaturedCategoryTree = ({ featuredCategories }) => {
           {parent && (
             <div className="card">
               <a href={`/productDetails/${parent.slug}`} >
-              <img
-                className="card-img-top"
-                // src={`${fileUrl}/upload/product/compressedProductImages/${parent.home_image}`}
-                src={`${fileUrl}/upload/product/compressedProductImages/${parent.home_image}`}
-                onMouseOver={(e) =>
-                  (e.currentTarget.src = `${fileUrl}/upload/product/compressedProductImages/${parent.images[1].imageName}`)
-                }
-                onMouseOut={(e) =>
-                  (e.currentTarget.src = `${fileUrl}/upload/product/compressedProductImages/${parent.home_image}`)
-                }
-                alt={capitalizeStr(parent.product_name)}
-                title={capitalizeStr(parent.product_name)}
-              />
+                <img
+                  className="card-img-top"
+                  // src={`${fileUrl}/upload/product/compressedProductImages/${parent.home_image}`}
+                  src={`${fileUrl}/upload/product/compressedProductImages/${parent.home_image}`}
+                  onMouseOver={(e) =>
+                    (e.currentTarget.src = `${fileUrl}/upload/product/compressedProductImages/${parent.images[1].imageName}`)
+                  }
+                  onMouseOut={(e) =>
+                    (e.currentTarget.src = `${fileUrl}/upload/product/compressedProductImages/${parent.home_image}`)
+                  }
+                  alt={capitalizeStr(parent.product_name)}
+                  title={capitalizeStr(parent.product_name)}
+                />
 
-              {parent.newProduct !== 1 && (
-                <span className="product-new-label">New</span>
-              )}
+                {parent.newProduct !== 1 && (
+                  <span className="product-new-label">New</span>
+                )}
 
-              {parent.discountAmount != 0 && (
-                <span className="product-new-label-discount-feature-parent">
-                  {calDiscountPercentage(
-                    parent.discountAmount,
-                    parent.productPrice
-                  )}
-                  %
-                </span>
-              )}
+                {parent.discountAmount != 0 && (
+                  <span className="product-new-label-discount-feature-parent">
+                    {calDiscountPercentage(
+                      parent.discountAmount,
+                      parent.productPrice
+                    )}
+                    %
+                  </span>
+                )}
 
-              <div className="card-body">
-                <div className="text-center">
-                  <h1 className="card-title h4 my-1">
-                    <span className="text-primary">
-                      {capitalize_and_shorten_name(parent.product_name)}
-                    </span>
-                  </h1>
-                  <p className={`card-text`}>৳&nbsp;{parent.productPrice}</p>
+                <div className="card-body">
+                  <div className="text-center">
+                    <h1 className="card-title h4 my-1">
+                      <span className="text-primary">
+                        {capitalize_and_shorten_name(parent.product_name)}
+                      </span>
+                    </h1>
+                    <p className={`card-text`}>৳&nbsp;{parent.productPrice}</p>
+                  </div>
                 </div>
-              </div>
               </a>
             </div>
           )}
@@ -141,49 +141,49 @@ const ListingFeaturedCategoryTree = ({ featuredCategories }) => {
               {subCat && (
                 <div className="card">
                   <a href={`/productDetails/${subCat[0].slug}`} >
-                  <img
-                    className="card-img-top"
-                    style={{ maxHeight: "85px" }}
-                    // src={`${fileUrl}/upload/product/compressedProductImages/${subCat[0].home_image}`}
-                    src={`${fileUrl}/upload/product/compressedProductImages/${subCat[0].home_image}`}
-                    onMouseOver={(e) =>
-                      (e.currentTarget.src = `${fileUrl}/upload/product/compressedProductImages/${subCat[0].images[1].imageName}`)
-                    }
-                    onMouseOut={(e) =>
-                      (e.currentTarget.src = `${fileUrl}/upload/product/compressedProductImages/${subCat[0].home_image}`)
-                    }
-                    alt={capitalizeStr(subCat[0].product_name)}
-                    title={capitalizeStr(subCat[0].product_name)}
-                  />
+                    <img
+                      className="card-img-top"
+                      style={{ maxHeight: "85px" }}
+                      // src={`${fileUrl}/upload/product/compressedProductImages/${subCat[0].home_image}`}
+                      src={`${fileUrl}/upload/product/compressedProductImages/${subCat[0].home_image}`}
+                      onMouseOver={(e) =>
+                        (e.currentTarget.src = `${fileUrl}/upload/product/compressedProductImages/${subCat[0].images[1].imageName}`)
+                      }
+                      onMouseOut={(e) =>
+                        (e.currentTarget.src = `${fileUrl}/upload/product/compressedProductImages/${subCat[0].home_image}`)
+                      }
+                      alt={capitalizeStr(subCat[0].product_name)}
+                      title={capitalizeStr(subCat[0].product_name)}
+                    />
 
-                  {subCat[0].newProduct !== 1 && (
-                    <span className="product-new-label-small-carousel">
-                      New
-                    </span>
-                  )}
+                    {subCat[0].newProduct !== 1 && (
+                      <span className="product-new-label-small-carousel">
+                        New
+                      </span>
+                    )}
 
-                  {subCat[0].discountAmount != 0 && (
-                    <span className="product-new-label-discount-feature-child">
-                      {calDiscountPercentage(
-                        subCat[0].discountAmount,
-                        subCat[0].productPrice
-                      )}
-                      %
-                    </span>
-                  )}
+                    {subCat[0].discountAmount != 0 && (
+                      <span className="product-new-label-discount-feature-child">
+                        {calDiscountPercentage(
+                          subCat[0].discountAmount,
+                          subCat[0].productPrice
+                        )}
+                        %
+                      </span>
+                    )}
 
-                  <div className="card-body">
-                    <div className="text-center">
-                      <h1 className="card-title h6 custom-font-size mb-0">
-                        <span className="text-primary">
-                          {capitalize_and_shorten_name(parent.product_name)}
-                        </span>
-                      </h1>
-                      <p className={`card-text`}>
-                        ৳&nbsp;{parent.productPrice}
-                      </p>
+                    <div className="card-body">
+                      <div className="text-center">
+                        <h1 className="card-title h6 custom-font-size mb-0">
+                          <span className="text-primary">
+                            {capitalize_and_shorten_name(parent.product_name)}
+                          </span>
+                        </h1>
+                        <p className={`card-text`}>
+                          ৳&nbsp;{parent.productPrice}
+                        </p>
+                      </div>
                     </div>
-                  </div>
                   </a>
                 </div>
               )}
@@ -193,49 +193,49 @@ const ListingFeaturedCategoryTree = ({ featuredCategories }) => {
               {subCat && (
                 <div className="card">
                   <a href={`/productDetails/${subCat[1].slug}`} >
-                  <img
-                    className="card-img-top"
-                    style={{ maxHeight: "85px" }}
-                    // src={`${fileUrl}/upload/product/compressedProductImages/${subCat[1].home_image}`}
-                    src={`${fileUrl}/upload/product/compressedProductImages/${subCat[1].home_image}`}
-                    onMouseOver={(e) =>
-                      (e.currentTarget.src = `${fileUrl}/upload/product/compressedProductImages/${subCat[1].images[1].imageName}`)
-                    }
-                    onMouseOut={(e) =>
-                      (e.currentTarget.src = `${fileUrl}/upload/product/compressedProductImages/${subCat[1].home_image}`)
-                    }
-                    alt={capitalizeStr(subCat[0].product_name)}
-                    title={capitalizeStr(subCat[0].product_name)}
-                  />
+                    <img
+                      className="card-img-top"
+                      style={{ maxHeight: "85px" }}
+                      // src={`${fileUrl}/upload/product/compressedProductImages/${subCat[1].home_image}`}
+                      src={`${fileUrl}/upload/product/compressedProductImages/${subCat[1].home_image}`}
+                      onMouseOver={(e) =>
+                        (e.currentTarget.src = `${fileUrl}/upload/product/compressedProductImages/${subCat[1].images[1].imageName}`)
+                      }
+                      onMouseOut={(e) =>
+                        (e.currentTarget.src = `${fileUrl}/upload/product/compressedProductImages/${subCat[1].home_image}`)
+                      }
+                      alt={capitalizeStr(subCat[0].product_name)}
+                      title={capitalizeStr(subCat[0].product_name)}
+                    />
 
-                  {subCat[1].newProduct !== 1 && (
-                    <span className="product-new-label-small-carousel">
-                      New
-                    </span>
-                  )}
+                    {subCat[1].newProduct !== 1 && (
+                      <span className="product-new-label-small-carousel">
+                        New
+                      </span>
+                    )}
 
-                  {subCat[1].discountAmount != 0 && (
-                    <span className="product-new-label-discount-feature-child">
-                      {calDiscountPercentage(
-                        subCat[1].discountAmount,
-                        subCat[1].productPrice
-                      )}
-                      %
-                    </span>
-                  )}
+                    {subCat[1].discountAmount != 0 && (
+                      <span className="product-new-label-discount-feature-child">
+                        {calDiscountPercentage(
+                          subCat[1].discountAmount,
+                          subCat[1].productPrice
+                        )}
+                        %
+                      </span>
+                    )}
 
-                  <div className="card-body">
-                    <div className="text-center">
-                      <h1 className="card-title h6 custom-font-size mb-0">
-                        <span className="text-primary">
-                          {capitalize_and_shorten_name(parent.product_name)}
-                        </span>
-                      </h1>
-                      <p className={`card-text`}>
-                        ৳&nbsp;{parent.productPrice}
-                      </p>
+                    <div className="card-body">
+                      <div className="text-center">
+                        <h1 className="card-title h6 custom-font-size mb-0">
+                          <span className="text-primary">
+                            {capitalize_and_shorten_name(parent.product_name)}
+                          </span>
+                        </h1>
+                        <p className={`card-text`}>
+                          ৳&nbsp;{parent.productPrice}
+                        </p>
+                      </div>
                     </div>
-                  </div>
                   </a>
                 </div>
               )}

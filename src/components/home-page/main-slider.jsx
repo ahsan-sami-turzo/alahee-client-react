@@ -17,7 +17,6 @@ const MainSlider = ({ images }) => {
         centerMode={false}
         className="pl-0"
         containerClass="container"
-        dotListClass=""
         draggable
         focusOnSelect={false}
         infinite

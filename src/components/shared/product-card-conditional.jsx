@@ -2,10 +2,9 @@ import React from 'react';
 import LazyLoad from 'react-lazyload';
 import {
   calDiscountPercentage,
+  calculateProductPriceAfterDiscount,
   capitalizeStr,
-  shorten_the_name,
-  capitalize_and_shorten_name,
-  calculateProductPriceAfterDiscount
+  capitalize_and_shorten_name
 } from '../../utils/utils';
 
 const file_url = process.env.REACT_APP_FILE_URL;
@@ -84,8 +83,8 @@ const ProductCardConditional = ({ product, customNewLabelCSSDesktop, customDisco
               {product.discountAmount > 0 && (
                 <span>৳&nbsp;{product.productPrice}</span>
               )} */}
-              
-              <span className={ (calculateProductPriceAfterDiscount(product.productPrice, product.discountAmount) > 0 ? 'strikediag' : '')}>
+
+              <span className={(calculateProductPriceAfterDiscount(product.productPrice, product.discountAmount) > 0 ? 'strikediag' : '')}>
                 ৳&nbsp;{product.productPrice}
               </span>
               &nbsp;

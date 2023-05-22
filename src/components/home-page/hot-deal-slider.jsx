@@ -54,12 +54,12 @@ const HotDealSlider = ({ products }) => {
       >
         {products.map((product) => (
           <div className="mr-2" key={product.product_id}>
-            <ProductCardConditional 
-              product = {product} 
-              customNewLabelCSSDesktop = "product-new-label-hotdeal" 
-              customDiscountCSSDesktop = "product-new-label-discount-hotdeal"
-              customNewLabelCSSMobile = "product-new-label-threeDiv" 
-              customDiscountCSSMobile = "product-new-label-discount-threeDiv"
+            <ProductCardConditional
+              product={product}
+              customNewLabelCSSDesktop="product-new-label-hotdeal"
+              customDiscountCSSDesktop="product-new-label-discount-hotdeal"
+              customNewLabelCSSMobile="product-new-label-threeDiv"
+              customDiscountCSSMobile="product-new-label-discount-threeDiv"
             />
           </div>
         ))}

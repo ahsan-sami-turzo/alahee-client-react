@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useContext } from "react";
-import { useHistory } from "react-router-dom";
 import axios from "axios";
+import React, { useContext, useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 
 import { OrderContext } from "../../context/OrderContext";
+import { base } from "../../utils/common-helpers";
 import { comma_separate_numbers } from "../../utils/utils";
-import { base, frontEndUrl, fileUrl, emailPattern, options } from "../../utils/common-helpers";
 
 
 const OrderSummary = (props) => {
@@ -95,8 +95,8 @@ const OrderSummary = (props) => {
       .post(`${base}/api/shipping_amount`, {
         cartProducts
       })
-      .then(function (response) {        
-        set_shippingAmount(response.data.data);        
+      .then(function (response) {
+        set_shippingAmount(response.data.data);
       })
       .catch(function (error) {
         console.log(error);
@@ -141,8 +141,8 @@ const OrderSummary = (props) => {
       })
       .then(function (response) {
         console.clear()
-        console.log( response.data )
-        if ( response.data.data > 0) {
+        console.log(response.data)
+        if (response.data.data > 0) {
           set_promoAmount(response.data.data);
           set_promoCodeDetails(response.data.dataDetail);
         } else {

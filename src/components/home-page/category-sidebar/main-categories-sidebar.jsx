@@ -33,7 +33,7 @@ const MainCategoriesSidebar = ({ categories }) => {
                           <p className="vendor-Image">Brand</p>
                           <ul className="spvmm_submm_ul">
                             <div className="sub-cate-row scp-cate-brand">
-                            <ul className="sub-brand-list sub-brand-list-gutter">
+                              <ul className="sub-brand-list sub-brand-list-gutter">
                                 <ListingVendorImages
                                   vendorImages={vendorImages}
                                 />

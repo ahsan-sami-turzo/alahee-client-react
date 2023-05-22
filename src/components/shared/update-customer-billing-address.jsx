@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useContext } from "react";
-import { useHistory } from "react-router-dom";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 
 import { base } from "../../utils/common-helpers";
 
@@ -24,8 +24,8 @@ const UpdateCustomerBillingAddress = () => {
   const [name, set_name] = useState("");
   const [phone_number, set_phone_number] = useState("");
   const [email, set_email] = useState("");
-  const [address, set_address] = useState("");  
-  
+  const [address, set_address] = useState("");
+
   const [alert_text, set_alert_text] = useState(
     "Could not complete purchase. Please try again later."
   );
@@ -73,19 +73,19 @@ const UpdateCustomerBillingAddress = () => {
     getPostcode()
   }, [postOffice]);
 
-  
+
   const getDivisions = () => axios.get(`${adminBase}/api/divisions`).then((res) => setDivisions(res.data.data))
-  const getDistricts = () => axios.get(`${adminBase}/api/districts/${division}`).then((res) => setDistricts(res.data.data))  
-  const getThanas = () => axios.get(`${adminBase}/api/thanas/${division}/${district}`).then((res) => setThanas(res.data.data)) 
-  const getPostOffices = () => axios.get(`${adminBase}/api/postOffices/${division}/${district}`).then((res) => setPostOffices(res.data.data))  
-  const getAreas = () => axios.get(`${adminBase}/api/areas/${division}/${district}/${thana}/${postOffice}`).then((res) => setAreas(res.data.data))  
+  const getDistricts = () => axios.get(`${adminBase}/api/districts/${division}`).then((res) => setDistricts(res.data.data))
+  const getThanas = () => axios.get(`${adminBase}/api/thanas/${division}/${district}`).then((res) => setThanas(res.data.data))
+  const getPostOffices = () => axios.get(`${adminBase}/api/postOffices/${division}/${district}`).then((res) => setPostOffices(res.data.data))
+  const getAreas = () => axios.get(`${adminBase}/api/areas/${division}/${district}/${thana}/${postOffice}`).then((res) => setAreas(res.data.data))
   const getPostcode = () => (postOffice == 'all') ? setPostcode("") : axios.get(`${adminBase}/api/postcode/${postOffice}`).then((res) => setPostcode(res.data.data[0].postcode))
-  
+
   const getCustomerInfo = () => {
     const customerId = localStorage.customer_id ? localStorage.customer_id : 0;
     if (customerId) {
       axios.get(`${base}/api/get_customer_info/${customerId}`).then((res) => {
-        
+
         const {
           name,
           email,
@@ -93,7 +93,7 @@ const UpdateCustomerBillingAddress = () => {
           phone_number,
           division,
           district,
-          thana, 
+          thana,
           postoffice,
           area,
           zipcode
@@ -104,7 +104,7 @@ const UpdateCustomerBillingAddress = () => {
           customerAddress: address ? address : "",
           customerPhone: phone_number ? phone_number : "",
         });
-        
+
         set_name(name);
         set_email(email);
         set_address(address);
@@ -154,7 +154,7 @@ const UpdateCustomerBillingAddress = () => {
   const areaSelectionHandler = (e) => {
     setArea(e.target.value)
   };
-    
+
 
   const addressSubmit = (event) => {
     event.preventDefault();
@@ -212,7 +212,7 @@ const UpdateCustomerBillingAddress = () => {
     //   set_alert_text("Postcode can not be empty !!");
     //   return;
     // }
-    
+
 
     fetch(base + "/api/saveCustomerAddress", {
       method: "POST",
@@ -258,7 +258,7 @@ const UpdateCustomerBillingAddress = () => {
     if (val == null || val == undefined || val == '' || val == 'all' || val == 'All' || val == '0') return true
     return false
   }
-  
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -312,7 +312,7 @@ const UpdateCustomerBillingAddress = () => {
               </div>
             </div>
           </div>
-          
+
           <div className="checkout-input mb-3">
             <p className="mb-3">
               Address<span>*</span>
@@ -391,12 +391,12 @@ const UpdateCustomerBillingAddress = () => {
                   ))}
                 </select>
               </div>
-            </div> 
+            </div>
 
           </div>
 
           <div className="row">
-            
+
             <div className="col-lg-4">
               <div className="checkout-input mb-3">
                 <p className="mb-3">
@@ -418,7 +418,7 @@ const UpdateCustomerBillingAddress = () => {
                 </select>
               </div>
             </div>
-            
+
             <div className="col-lg-4">
               <div className="checkout-input mb-3">
                 <p className="mb-3">
@@ -440,7 +440,7 @@ const UpdateCustomerBillingAddress = () => {
                 </select>
               </div>
             </div>
-            
+
             <div className="col-lg-4">
               <div className="checkout-input mb-3">
                 <p className="mb-3">
@@ -455,10 +455,10 @@ const UpdateCustomerBillingAddress = () => {
               </div>
             </div>
           </div>
-          
+
         </form>
       </div>
-            
+
     </>
   );
 };

@@ -1,24 +1,15 @@
 import React from "react";
-import {
-  Button,
-  Navbar,
-  Nav,
-  NavItem,
-  NavDropdown,
-  MenuItem,
-} from "react-bootstrap";
-
-import TopNav from "./header-components/top-nav";
-import SearchBox from "./header-components/search-box";
 import CartIcon from "./header-components/cart-icon";
 import MainMenuCategory from "./header-components/main-menu-category";
+import SearchBox from "./header-components/search-box";
+import TopNav from "./header-components/top-nav";
 
 const file_url = process.env.REACT_APP_FILE_URL;
 const img_src = `${file_url}/upload/company`;
 const project_name = process.env.REACT_APP_PROJECT_NAME;
 
 const Header = ({ companyInfo }) => {
-  
+
   return (
     <>
       {/* desktop  */}
@@ -64,7 +55,7 @@ const Header = ({ companyInfo }) => {
                 {/* Nav with auth dropdown */}
                 <div className="col-9">
                   <div className="float-right">
-                    <TopNav viewType="desktop" companyInfo={companyInfo}/>
+                    <TopNav viewType="desktop" companyInfo={companyInfo} />
                   </div>
                 </div>
               </div>
@@ -105,14 +96,14 @@ const Header = ({ companyInfo }) => {
                   src={`${img_src}/${companyInfo.logo}`}
                   alt={`${project_name} logo`}
                   title={`${project_name} logo`}
-                  style={{ verticalAlign:"middle" }}
+                  style={{ verticalAlign: "middle" }}
                 />
               </a>
             </div>
             <div className="col-3 offset-3">
               <div className="d-flex flex-row justify-content-end">
 
-                <TopNav viewType="mobile" companyInfo={companyInfo}/>
+                <TopNav viewType="mobile" companyInfo={companyInfo} />
 
                 {/* <div className="mt-4 ml-4">
                   <CartIcon viewType="mobile" />
@@ -132,7 +123,7 @@ const Header = ({ companyInfo }) => {
           </div>
         </div>
       </div>
-   
+
     </>
   );
 };

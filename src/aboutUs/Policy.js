@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 
 const base = process.env.REACT_APP_FRONTEND_SERVER_URL;
@@ -16,12 +16,12 @@ const Policy = (props) => {
   const getPolicy = () => {
 
     let policySlug = "";
-    if(props.match.params.policytype === "privacy-policy") policySlug = "privacy-policy-2";
-    if(props.match.params.policytype === "cookie-policy") policySlug = "cookie-policy-3";
-    if(props.match.params.policytype === "warranty-policy") policySlug = "warranty-policy-4";
-    if(props.match.params.policytype === "shipping-policy") policySlug = "shipping-policy-5";
-    if(props.match.params.policytype === "terms-and-condition") policySlug = "terms-and-condition-1";
-    if(props.match.params.policytype === "returns-and-replacement") policySlug = "returns-and-replacement-6";
+    if (props.match.params.policytype === "privacy-policy") policySlug = "privacy-policy-2";
+    if (props.match.params.policytype === "cookie-policy") policySlug = "cookie-policy-3";
+    if (props.match.params.policytype === "warranty-policy") policySlug = "warranty-policy-4";
+    if (props.match.params.policytype === "shipping-policy") policySlug = "shipping-policy-5";
+    if (props.match.params.policytype === "terms-and-condition") policySlug = "terms-and-condition-1";
+    if (props.match.params.policytype === "returns-and-replacement") policySlug = "returns-and-replacement-6";
 
     axios
       .get(`${base}/api/policy/${policySlug}`)

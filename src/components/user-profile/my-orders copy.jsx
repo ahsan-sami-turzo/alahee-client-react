@@ -93,7 +93,7 @@ class MyOrders extends Component {
                       <th>Product</th>
                       <th>Quantity</th>
                       <th>Price</th>
-                      <th>Total Amount</th>                      
+                      <th>Total Amount</th>
                     </tr>
                   </thead>
                   <tbody style={{ fontSize: "14px" }}>
@@ -103,7 +103,7 @@ class MyOrders extends Component {
                         <td>{el.product_name}</td>
                         <td>{el.quantity}</td>
                         <td>{el.productPrice}</td>
-                        <td>{el.quantity * el.productPrice}</td>                        
+                        <td>{el.quantity * el.productPrice}</td>
                       </tr>
                     ))}
                   </tbody>

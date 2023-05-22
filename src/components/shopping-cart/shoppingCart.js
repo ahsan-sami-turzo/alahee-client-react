@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
-import { isEqual } from "lodash";
 import axios from "axios";
+import { isEqual } from "lodash";
 import SweetAlert from "sweetalert2-react";
 
 const base = process.env.REACT_APP_FRONTEND_SERVER_URL;
@@ -118,16 +118,16 @@ class ShoppingCart extends Component {
     let productIds = [];
 
     if (cartData) {
-      cartData.forEach(function(val, index) {
+      cartData.forEach(function (val, index) {
         productIds.push(val.productId);
       });
 
       let uniqueProductIds = productIds.filter((v, i, a) => a.indexOf(v) === i);
       let revisedCartData = [];
 
-      uniqueProductIds.forEach(function(valParent, keyParent) {
+      uniqueProductIds.forEach(function (valParent, keyParent) {
         let totalCount = 0;
-        cartData.forEach(function(val, key) {
+        cartData.forEach(function (val, key) {
           if (parseInt(valParent) === parseInt(val.productId)) {
             totalCount += val.quantity;
           }
@@ -136,7 +136,7 @@ class ShoppingCart extends Component {
       });
 
       let revisedCartDataKeyValue = [];
-      revisedCartData.forEach(function(value, key) {
+      revisedCartData.forEach(function (value, key) {
         revisedCartDataKeyValue[value.productId] = value.quantity;
       });
       return revisedCartDataKeyValue;
@@ -148,7 +148,7 @@ class ShoppingCart extends Component {
 
 
   getProductsInfoByCartData = (cartData, customerId = 0) => {
-    
+
     const data = JSON.stringify({ cartData, customerId });
     const url = `${base}/api/getCustomerCartProducts`;
 
@@ -562,14 +562,14 @@ class ShoppingCart extends Component {
     } else {
       let cartData = JSON.parse(localStorage.getItem("cart"));
       let productIds = [];
-      cartData.forEach(function(val, index) {
+      cartData.forEach(function (val, index) {
         productIds.push(val.productId);
       });
       let uniqueProductIds = productIds.filter((v, i, a) => a.indexOf(v) === i);
       let revisedCartData = [];
-      uniqueProductIds.forEach(function(valParent, keyParent) {
+      uniqueProductIds.forEach(function (valParent, keyParent) {
         let totalCount = 0;
-        cartData.forEach(function(val, key) {
+        cartData.forEach(function (val, key) {
           if (parseInt(valParent) === parseInt(val.productId)) {
             totalCount += val.quantity;
           }
@@ -655,7 +655,7 @@ class ShoppingCart extends Component {
   }
 
   continueShopping = () => {
-    window.location.href='/';
+    window.location.href = '/';
   }
 
   paymentModalCloseHandler = () => {
@@ -689,80 +689,80 @@ class ShoppingCart extends Component {
         <SweetAlert
           show={this.state.show_alert}
           title="Warning!"
-          type= "warning"
+          type="warning"
           text={this.state.alert_text}
           onConfirm={() => this.setState({ show_alert: false })}
         />
 
 
         <div className="container">
-        <div className="row">
+          <div className="row">
 
-          <div className="col-lg-8 col-md-6">
-            <div className="card">
-              <div className="card-header bg-success text-light text-center"></div>
-              
-              <div className="card-body">
-                {this.state.cartProductsInfo.length > 0 &&
-                  this.state.cartProductsInfo.map(item => (    
-                  <div className="row" key={item.product_name}>
-                      <div className="col-lg-3 col-md-12 col-sm-12">
-                        <img
-                          src={`${fileUrl}/upload/product/compressedProductImages/${item.home_image}`}
-                          className="img-fluid"
-                        />
-                      </div>
-                      <div className="col-lg-4 col-md-12 col-sm-12 text-sm-center text-lg-left">
-                        <h1 className="h5">{item.product_name}</h1>
-                        {item.color && 
+            <div className="col-lg-8 col-md-6">
+              <div className="card">
+                <div className="card-header bg-success text-light text-center"></div>
+
+                <div className="card-body">
+                  {this.state.cartProductsInfo.length > 0 &&
+                    this.state.cartProductsInfo.map(item => (
+                      <div className="row" key={item.product_name}>
+                        <div className="col-lg-3 col-md-12 col-sm-12">
+                          <img
+                            src={`${fileUrl}/upload/product/compressedProductImages/${item.home_image}`}
+                            className="img-fluid"
+                          />
+                        </div>
+                        <div className="col-lg-4 col-md-12 col-sm-12 text-sm-center text-lg-left">
+                          <h1 className="h5">{item.product_name}</h1>
+                          {item.color &&
+                            <p className="mb-1">
+                              Color:&nbsp;
+                              <b>{item.color.colorName}</b>
+                            </p>
+                          }
+                          {item.size &&
+                            <p className="mb-1">
+                              Size:&nbsp;
+                              <b>{item.size.size}</b>
+                            </p>
+                          }
                           <p className="mb-1">
-                            Color:&nbsp;
-                            <b>{item.color.colorName}</b>
+                            <em>৳&nbsp;</em> {item.productPrice}
                           </p>
-                        }
-                        {item.size && 
-                          <p className="mb-1">
-                            Size:&nbsp;
-                            <b>{item.size.size}</b>
-                          </p>
-                        }
-                        <p className="mb-1">
-                          <em>৳&nbsp;</em> {item.productPrice}
-                        </p>
-                      </div>
-                      <div className="col-lg-3 col-md-12 col-sm-12 my-auto text-sm-center text-lg-left">
-                        <div className="quantity">
-                          <div className="quantity-select">
-                            {/*Minus Button*/}
-                            <div
-                              onClick={() =>
-                                this.onClickMinusHandler(item)
-                              }
-                              className="entry value-minus1"
-                            >
-                              &nbsp;
-                            </div>
-                            <div className="entry value1">
-                              <span>{item.quantity}</span>
-                            </div>
-                            {/*Plus Button*/}
-                            <div
-                              onClick={() =>
-                                this.onClickPlusHandler(item)
-                              }
-                              className="entry value-plus1 active"
-                            >
-                              &nbsp;
+                        </div>
+                        <div className="col-lg-3 col-md-12 col-sm-12 my-auto text-sm-center text-lg-left">
+                          <div className="quantity">
+                            <div className="quantity-select">
+                              {/*Minus Button*/}
+                              <div
+                                onClick={() =>
+                                  this.onClickMinusHandler(item)
+                                }
+                                className="entry value-minus1"
+                              >
+                                &nbsp;
+                              </div>
+                              <div className="entry value1">
+                                <span>{item.quantity}</span>
+                              </div>
+                              {/*Plus Button*/}
+                              <div
+                                onClick={() =>
+                                  this.onClickPlusHandler(item)
+                                }
+                                className="entry value-plus1 active"
+                              >
+                                &nbsp;
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                      <div className="col-lg-2 col-md-12 col-sm-12 my-auto  text-sm-center  text-lg-right">
+                        <div className="col-lg-2 col-md-12 col-sm-12 my-auto  text-sm-center  text-lg-right">
                           <button
                             onClick={() => this.onClickDeleteHandler(item)}
                             type="button"
                             className="btn btn-outline-danger btn-xs"
-                            style={{borderColor:"transparent",background:"transparent" }}
+                            style={{ borderColor: "transparent", background: "transparent" }}
                           >
                             <i
                               className="fa fa-trash"
@@ -771,151 +771,151 @@ class ShoppingCart extends Component {
                             >
                               {""}
                             </i>
-                          </button>                          
+                          </button>
                         </div>
+                      </div>
+                    ))}
+                </div>
+
+                <div className="card-footer">
+                  <div className="text-right">
+                    <p className="my-0">
+                      {' '}
+                      Total price:
+                      <b>
+                        <em>৳&nbsp;</em> {this.state.totalPrice}
+                      </b>
+                    </p>
+
+                    <button
+                      style={{ display: 'none' }}
+                      id="LoginRegisterModalButton"
+                      type="button"
+                      data-toggle="modal"
+                      data-target="#LoginRegisterModal"
+                    ></button>
+                    <button
+                      style={{ display: 'none' }}
+                      id="ShippingModalButton"
+                      type="button"
+                      data-toggle="modal"
+                      data-target="#ShippingModal"
+                    ></button>
                   </div>
-                ))}
+                </div>
               </div>
+            </div>
 
-              <div className="card-footer">
-                <div className="text-right">
-                  <p className="my-0">
-                    {' '}
-                    Total price:
-                    <b>
-                      <em>৳&nbsp;</em> {this.state.totalPrice}
-                    </b>
-                  </p>
+            <div className="col-lg-4 col-md-6">
+              <div className="panel panel-default">
+                <div className="panel-heading text-center">
+                  <h4>Order Summary</h4>
+                </div>
+                <div className="panel-body">
+                  <div className="col-md-12">
+                    <strong className="strong-left-subtotal">
+                      Subtotal (
+                      {this.state.totalItems === 0 || this.state.totalItems === 1
+                        ? `${this.state.totalItems} item`
+                        : `${this.state.totalItems} items`}
+                      )
+                    </strong>
+                    <div className="float-right">
+                      <span>
+                        <em>৳ &nbsp;</em>
+                      </span>
+                      <span>{this.state.totalPrice}</span>
+                    </div>
+                  </div>
+                  <div className="col-md-12">
+                    <strong className="strong-left-vat">VAT & Tax</strong>
+                    <div className="float-right">
+                      <span>
+                        <em>৳ &nbsp;</em>
+                      </span>
+                      <span>0</span>
+                    </div>
+                  </div>
+                  <div className="col-md-12">
+                    <strong className="strong-left-discount">Discount</strong>
+                    <div className="float-right">
+                      <span>
+                        <em>৳ &nbsp;</em>
+                      </span>
+                      <span>{this.state.discountAmount}</span>
+                    </div>
+                  </div>
+                  <div className="col-md-12">
+                    <strong>
+                      Promo Code
+                      <span
+                        onClick={this.promoCodeModalDisplay}
+                        style={{ cursor: 'pointer' }}
+                        className="badge badge-success btn-apply rounded"
+                      >
+                        Apply
+                      </span>
+                    </strong>
+                    <div className="float-right">
+                      <span>
+                        <em>৳ &nbsp;</em>
+                      </span>
+                      <span>{this.state.promoCodeAmount}</span>
+                    </div>
+                  </div>
+                  <div className="col-md-12">
+                    <strong className="strong-left-vat">Shipping</strong>
+                    <div className="float-right">
+                      <span>
+                        <em>৳ &nbsp;</em>
+                      </span>
+                      <span>0</span>
+                    </div>
+                    <hr />
+                  </div>
+                  <div className="col-md-12">
+                    <strong className="strong-left-order">Order Total</strong>
+                    <div className="float-right">
+                      <span>
+                        <em>৳ &nbsp;</em>
+                      </span>
+                      <span>
+                        {this.state.totalPrice -
+                          this.state.discountAmount -
+                          this.state.promoCodeAmount}</span>
+                    </div>
+                    <hr />
+                  </div>
+                  <button
+                    onClick={() => this.checkInventory("Order Place")}
+                    className="btn btn-primary btn-block btn-place-order"
+                  >
+                    Place Order
+                  </button>
 
                   <button
-                    style={{ display: 'none' }}
-                    id="LoginRegisterModalButton"
+                    onClick={() => window.location.href = "/checkout"}
+                    className="btn btn-primary btn-block btn-continue-shop"
                     type="button"
-                    data-toggle="modal"
-                    data-target="#LoginRegisterModal"
-                  ></button>
+                  >
+                    Checkout
+                  </button>
+
                   <button
-                    style={{ display: 'none' }}
-                    id="ShippingModalButton"
+                    onClick={() => this.continueShopping()}
+                    className="btn btn-primary btn-block btn-continue-shop"
+                    id="PromoCodeModalButton"
                     type="button"
                     data-toggle="modal"
-                    data-target="#ShippingModal"
-                  ></button>
+                    data-target="#PromoCodeModal"
+                  >
+                    Continue shopping
+                  </button>
                 </div>
               </div>
             </div>
-          </div>
-          
-          <div className="col-lg-4 col-md-6">
-            <div className="panel panel-default">
-              <div className="panel-heading text-center">
-                <h4>Order Summary</h4>
-              </div>
-              <div className="panel-body">
-                <div className="col-md-12">
-                  <strong className="strong-left-subtotal">
-                    Subtotal (
-                    {this.state.totalItems === 0 || this.state.totalItems === 1
-                      ? `${this.state.totalItems} item`
-                      : `${this.state.totalItems} items`}
-                    )
-                  </strong>
-                  <div className="float-right">
-                    <span>
-                      <em>৳ &nbsp;</em>
-                    </span>
-                    <span>{this.state.totalPrice}</span>
-                  </div>
-                </div>
-                <div className="col-md-12">
-                  <strong className="strong-left-vat">VAT & Tax</strong>
-                  <div className="float-right">
-                    <span>
-                      <em>৳ &nbsp;</em>
-                    </span>
-                    <span>0</span>
-                  </div>
-                </div>
-                <div className="col-md-12">
-                  <strong className="strong-left-discount">Discount</strong>
-                  <div className="float-right">
-                    <span>
-                      <em>৳ &nbsp;</em>
-                    </span>
-                    <span>{this.state.discountAmount}</span>
-                  </div>
-                </div>
-                <div className="col-md-12">
-                  <strong>
-                    Promo Code
-                    <span
-                      onClick={this.promoCodeModalDisplay}
-                      style={{ cursor: 'pointer' }}
-                      className="badge badge-success btn-apply rounded"
-                    >
-                      Apply
-                    </span>
-                  </strong>
-                  <div className="float-right">
-                    <span>
-                      <em>৳ &nbsp;</em>
-                    </span>
-                    <span>{this.state.promoCodeAmount}</span>
-                  </div>
-                </div>
-                <div className="col-md-12">
-                  <strong className="strong-left-vat">Shipping</strong>
-                  <div className="float-right">
-                    <span>
-                      <em>৳ &nbsp;</em>
-                    </span>
-                    <span>0</span>
-                  </div>
-                  <hr />
-                </div>
-                <div className="col-md-12">
-                  <strong className="strong-left-order">Order Total</strong>
-                  <div className="float-right">
-                    <span>
-                      <em>৳ &nbsp;</em>
-                    </span>
-                    <span>
-                      {this.state.totalPrice -
-                        this.state.discountAmount -
-                        this.state.promoCodeAmount}</span>
-                  </div>
-                  <hr />
-                </div>
-                <button 
-                  onClick={() => this.checkInventory("Order Place")}
-                  className="btn btn-primary btn-block btn-place-order"
-                >
-                  Place Order
-                </button>
 
-                <button
-                  onClick={() => window.location.href = "/checkout"}
-                  className="btn btn-primary btn-block btn-continue-shop"
-                  type="button"
-                >
-                  Checkout
-                </button>
-
-                <button
-                  onClick={() => this.continueShopping()}
-                  className="btn btn-primary btn-block btn-continue-shop"
-                  id="PromoCodeModalButton"
-                  type="button"
-                  data-toggle="modal"
-                  data-target="#PromoCodeModal"
-                >
-                  Continue shopping
-                </button>
-              </div>
-            </div>
           </div>
-        
-        </div>
         </div>
 
 
@@ -983,10 +983,10 @@ class ShoppingCart extends Component {
               <div className="modal-footer"></div>
             </div>
           </div>
-        
+
         </div>
         {/* End of exampleModalShipping */}
-        
+
         {/* LoginRegisterModal */}
         <div
           className="modal"
@@ -1001,7 +1001,7 @@ class ShoppingCart extends Component {
               <div
                 className="modal-header"
               >
-                
+
                 <button
                   id="hideLogin"
                   type="button"
@@ -1104,7 +1104,7 @@ class ShoppingCart extends Component {
                 </div>
 
                 <div id="loginCart" className="tab-pane fade">
-              
+
 
                   <form
                     className="form-signin"
@@ -1184,7 +1184,7 @@ class ShoppingCart extends Component {
               </div>
             </div>
           </div>
-        
+
         </div>
         {/* end of LoginRegisterModal */}
 
@@ -1221,7 +1221,7 @@ class ShoppingCart extends Component {
                 </div>
 
                 <div className="col-md-12">
-                <div className="float-left"> <strong>Shipping Information</strong></div>
+                  <div className="float-left"> <strong>Shipping Information</strong></div>
                   <div className="float-right">
                     <i
                       className="fa fa-angle-right mb-2"
@@ -1231,8 +1231,8 @@ class ShoppingCart extends Component {
                       {""}
                     </i>
                   </div>
-                  <br/>
-                 
+                  <br />
+
                   <button
                     type="button"
                     // className="next-btn next-medium next-btn-primary next-btn-text mt-1"
@@ -1247,8 +1247,8 @@ class ShoppingCart extends Component {
                   </button>
                 </div>
 
-                
-               
+
+
 
                 <div className="col-md-12">
                   <input
@@ -1268,7 +1268,7 @@ class ShoppingCart extends Component {
               </div>
               <div className="modal-footer">
                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                 <button
+                <button
                   style={{ display: "none !important" }}
                   id="PaymentModalButton"
                   type="button"
@@ -1297,7 +1297,7 @@ class ShoppingCart extends Component {
             </div>
           </div>
         </div>
-    
+
         {/* End of ShippingModal */}
 
         {/* termsModal */}
@@ -1335,14 +1335,14 @@ class ShoppingCart extends Component {
               <div className="modal-body">{this.state.termsMessage}</div>
             </div>
           </div>
-        
+
         </div>
         {/* End of termsModal */}
-                  
+
         {/* exampleModalPayment */}
 
         <div className="modal fade" id="exampleModalPayment" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div className="modal-dialog">
+          <div className="modal-dialog">
             <div className="modal-content">
               <div className="modal-header">
                 <button
@@ -1355,7 +1355,7 @@ class ShoppingCart extends Component {
                 >
                   <span aria-hidden="true">×</span>
                 </button>
-               
+
               </div>
 
               <ul className="nav nav-tabs" style={{ marginLeft: "10%" }}>
@@ -1369,7 +1369,7 @@ class ShoppingCart extends Component {
                     SSLCOMMERZE
                   </a>
                 </li>
-              
+
               </ul>
 
               <div className="tab-content">
@@ -1449,7 +1449,7 @@ class ShoppingCart extends Component {
                   </div>
                   <div className="modal-footer"></div>
                 </div>
-          
+
               </div>
             </div>
           </div>
@@ -1494,7 +1494,7 @@ class ShoppingCart extends Component {
                     SSLCOMMERZE
                   </a>
                 </li>
-              
+
               </ul>
 
               <div className="tab-content">
@@ -1574,11 +1574,11 @@ class ShoppingCart extends Component {
                   </div>
                   <div className="modal-footer"></div>
                 </div>
-          
+
               </div>
             </div>
           </div>
-        
+
         </div>
         {/* End of exampleModalPayment */}
 
@@ -1688,12 +1688,12 @@ class ShoppingCart extends Component {
                 </form>
               </div>
               <div className="modal-footer">
-             
+
               </div>
             </div>
           </div>
         </div>
-  
+
         {/* addressModal */}
 
         {/* paymentModal */}
@@ -1789,15 +1789,15 @@ class ShoppingCart extends Component {
                 </div>
               </div>
               <div className="modal-footer">
-             
+
               </div>
             </div>
           </div>
         </div>
- 
+
         {/* End of paymentModal */}
 
-        
+
 
       </React.Fragment>
     );

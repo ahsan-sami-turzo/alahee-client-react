@@ -1,6 +1,6 @@
+import axios from "axios";
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import axios from "axios";
 import {
   get_customer_info,
   upload_customer_photo,
@@ -49,7 +49,7 @@ class ViewProfile extends Component {
         form_data,
         { headers: { "Content-Type": "multipart/form-data" } }
       );
-      const { file_name, file_path } = res.data;
+      const { file_name } = res.data;
       await axios.post(
         `${base}/api/set_profile_photo`,
         { file_name, customer_id: this.props.customer_profile.id },
@@ -72,7 +72,6 @@ class ViewProfile extends Component {
 
   render() {
     const {
-      id,
       name,
       email,
       address,
@@ -106,9 +105,7 @@ class ViewProfile extends Component {
                         <div className="col-md-12">
                           {profile_pic !== null ? (
                             <img
-                              // src={`/image/profilePic/${profile_pic}`}
                               src={`${img_src}${profile_pic}`}
-                              alt="profile-photo"
                               title={
                                 name !== null ? name : "Default_Profile_Pic"
                               }
@@ -117,8 +114,7 @@ class ViewProfile extends Component {
                           ) : (
                             <img
                               src="https://via.placeholder.com/150"
-                              alt="profile-photo"
-                              title="Mehedi Hasan"
+                              title="Test User"
                               width={150}
                             />
                           )}

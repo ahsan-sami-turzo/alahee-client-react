@@ -6,9 +6,9 @@ const fileUrl = process.env.REACT_APP_FILE_URL;
 
 const VendorCarouselSlider = ({ vendors }) => {
 
-  if(vendors) {
-    vendors.map( (item, index) => {
-      if(!item.shop_name) vendors.splice(index, 1)
+  if (vendors) {
+    vendors.map((item, index) => {
+      if (!item.shop_name) vendors.splice(index, 1)
     })
   }
 

@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { get_order_history } from "../../redux/customer-profile/customer-actions";
+import { fileUrl } from "../../utils/common-helpers";
 import { comma_separate_numbers } from "../../utils/utils";
-import { base, frontEndUrl, fileUrl, emailPattern, options } from "../../utils/common-helpers";
 import ProfilePageNav from "./profile-nav";
 
 
@@ -90,55 +90,55 @@ class MyOrders extends Component {
             {order_history.length > 0 ? (
 
               <Fragment>
-                { order_history.map((item) => (
+                {order_history.map((item) => (
                   <div className="card mt-2">
                     <div className="card-header bg-success text-light text-center"></div>
 
                     <div className="card-body">
                       <div className="row p-2" key={item.product_name}>
-                        
-                          <div className="row col-md-12 col-sm-12 parent">
-                            
-                              <div className="col-md-2 col-sm-2 child">{item.sales_date}</div>                            
-                              <div className="col-md-3 col-sm-3 child">
-                                <img
-                                  src={`${fileUrl}/upload/product/compressedProductImages/${item.home_image}`}
-                                  className="img-fluid"
-                                />
-                              </div>
-                              <div className="col-md-3 col-sm-3 child"><h1 className="h5">{item.product_name}</h1></div>
-                              <div className="col-md-2 col-sm-2 child"><em>Quantity&nbsp;</em> {item.sales_product_quantity}</div>
-                              <div className="col-md-2 col-sm-2 child"><em>Unit Price&nbsp;</em> {item.unitPrice}</div>                            
+
+                        <div className="row col-md-12 col-sm-12 parent">
+
+                          <div className="col-md-2 col-sm-2 child">{item.sales_date}</div>
+                          <div className="col-md-3 col-sm-3 child">
+                            <img
+                              src={`${fileUrl}/upload/product/compressedProductImages/${item.home_image}`}
+                              className="img-fluid"
+                            />
                           </div>
-                        
+                          <div className="col-md-3 col-sm-3 child"><h1 className="h5">{item.product_name}</h1></div>
+                          <div className="col-md-2 col-sm-2 child"><em>Quantity&nbsp;</em> {item.sales_product_quantity}</div>
+                          <div className="col-md-2 col-sm-2 child"><em>Unit Price&nbsp;</em> {item.unitPrice}</div>
+                        </div>
+
                       </div>
                     </div>
 
                     <div className="card-footer">
                       <div className="row col-md-12">
-                        <div className="col-md-4 col-sm-12 child" style={{textAlign: 'left'}}>
+                        <div className="col-md-4 col-sm-12 child" style={{ textAlign: 'left' }}>
                           <p className="my-0">
                             Bill No:
                             <strong>&nbsp;{item.sales_bill_no}</strong>
                           </p>
                         </div>
 
-                        <div className="col-md-5 col-sm-12" style={{textAlign: 'center'}}>
+                        <div className="col-md-5 col-sm-12" style={{ textAlign: 'center' }}>
                           <p className="my-0">
                             Status:&nbsp;
-                            { item.isAcceptedByVendor == "False" ? (
-                              <strong style={{textTransform: 'capitalize'}}>
+                            {item.isAcceptedByVendor == "False" ? (
+                              <strong style={{ textTransform: 'capitalize' }}>
                                 Awaiting confirmation
                               </strong>
                             ) : (
-                              <strong style={{textTransform: 'capitalize'}}>
+                              <strong style={{ textTransform: 'capitalize' }}>
                                 {item.delivery_status}
                               </strong>
                             )}
                           </p>
                         </div>
 
-                        <div className="col-md-3 col-sm-12" style={{textAlign: 'right'}}>
+                        <div className="col-md-3 col-sm-12" style={{ textAlign: 'right' }}>
                           <p className="my-0">
                             Total Price:
                             <strong><em>৳&nbsp;</em> {comma_separate_numbers(item.total_amount)}</strong>
